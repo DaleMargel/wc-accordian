@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Accordian</title>
+		<meta charset="utf-8">
+		<style>
+			body { 
+				background-color: white;
+				font-family: sans-serif;
+			}
+			wc-accordian > button[slot=header] {
+				background-color: #eee;
+				color: #444;
+				cursor: pointer;
+				padding: 18px;
+				width: 100%;
+				text-align: left;
+				border: none;
+				outline: none;
+				transition: 0.4s;
+			}
+			wc-accordian > [slot=section] { 
+				margin:16px;
+				padding: 0 18px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			wc-accordian[open=true] > button[slot=header], [slot=header]:hover, [slot=header]:focus {
+				background-color: #ccc;
+			}
+			table, th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+				padding: 4px;
+			}
+			img { display: block }
+		</style>
+	</head>
+	<body>
+		<wc-accordian open="true">
+			<h1 slot="header" tabindex="0">Accordian</h1>
+			<div slot="section">
+			An accordian expands to show details when clicked.
+			<ul>
+				<li>Header and details are user defined<br>
+					... in fact this section header is an accordian</li>
+				<li>Can be expanded by clicking or setting open="true"</li>
+				<li>Can work independently or in group (one open at a time)</li>
+				<li>Code is tiny 1.4k w/o compression</li>
+			</ul>
+			</div>
+		</wc-accordian>
+
+		<h2>These are grouped: only one of these can be open at any time</h2>
+		<wc-accordian group="demo">
+			<button slot="header" tabindex="0" >Look at this</button>
+			<p slot="section">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</wc-accordian>
+		<wc-accordian  group="demo">
+			<button slot="header" tabindex="0">... or this</button>
+			<img slot="section" src="deer.jpg" alt="baby deer" width="400" height="300">
+		</wc-accordian>
+		<wc-accordian  group="demo">
+			<button slot="header" tabindex="0">... or this too!</button>
+			<table slot="section">
+				<tr><th>Approach</th><th>Comments</th></tr>
+				<tr><td>angular</td><td>The heaviest and slowest of all
+					web development frameworks.
+				</td></tr>
+				<tr><td>vue</td><td>?</td></tr>
+				<tr><td>svetle</td><td>Great idea, small sized application, 
+					but code needs to be compiled.
+				</td></tr>
+				<tr><td>react</td><td>
+					Has some great bits, but takes on much of the work
+					done by a modern browser: templating, DOM, events,
+					compilation. This sort of leaves it stranded in 2014 
+					while imposing large performance and size overheads.
+				</td></tr>
+				<tr><td>preact</td><td>
+					Compatible with React, but creates much smaller and faster code.
+					As a web-only framework, it cannot target native 
+					mobile applications, but can target Progressive Web Applications (PWA).
+				</td></tr>
+				<tr><td>preact+htm</td><td>
+					Preact without compiling, building, packaging, or bundling.
+					The code runs directly on the browser without any further
+					tinkering. This makes developers very happy. Unfortunately,
+					most of the React ecosystem assumes a packager, so they
+					often do not work well here.
+				</td></tr>
+				<tr><td>custom elements</td><td>
+					Bare metal embedding of logic into an HTML tag.
+					Not a framework or library. It runs directly in the browser,
+					so is compatible with any library or framework.
+				</td></tr>
+				<tr><td>web components</td><td>
+					Like custom elements, but lets you write completely self-contained HTML tags.
+					Once you get used to these, you may never want to go back!
+				</td></tr>
+			</table>
+		</wc-accordian>
+		<wc-accordian  group="demo">
+			<button slot="header" tabindex="0">... or close all</button>
+		</wc-accordian>
+		
+		<h2>These are independent: any one can be open at any time</h2>
+		<wc-accordian>
+			<button slot="header" tabindex="0">Read this</button>
+			<div slot="section"> 
+				<p >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				<p >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+		</wc-accordian>
+		<wc-accordian>
+			<button slot="header" tabindex="0">... and this at the same time!</button>
+			<p slot="section">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</wc-accordian>
+		
+		<h2>Notes</h2>
+		<ul>
+			<li>Works better imported at end, when all of the screen has loaded</li>
+			<li>Accordians may not nest too well in some circumstances<br></li>
+		</ul>
+		<script type="module" src="./src/wc-accordian.js" inline></script>
+	</body>
+</html>
